@@ -1,3 +1,4 @@
 expiry 3540
 nopurge 1
 output /downloads
+quiet 1
