@@ -12,7 +12,7 @@ chown -R abc:abc \
 
 #refresh cache if necessary
 if [[ $INCLUDERADIO == "true" ]]; then
-	if [ ! -f "/config/.get_iplayer/tv.cache" ] | [! -f "/config/.get_iplayer/radio.cache"]; then
+	if [ ! -f "/config/.get_iplayer/tv.cache" ] || [! -f "/config/.get_iplayer/radio.cache"]; then
 		exec \
     		s6-setuidgid abc /app/get_iplayer/get_iplayer --refresh --type=all
 	fi
