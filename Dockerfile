@@ -1,6 +1,5 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.13
 LABEL maintainer="Adam Beardwood"
-ENV GETIPLAYER_OUTPUT=/config GETIPLAYER_PROFILE=/config/.get_iplayer PORT=1935 BASEURL=
 
 RUN apk add --update --no-cache ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml perl-libwww jq logrotate curl && \
 apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ atomicparsley
