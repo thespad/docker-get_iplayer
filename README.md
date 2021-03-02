@@ -29,7 +29,7 @@ Find us at:
 [![GitHub Release](https://img.shields.io/github/release/thespad/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer/releases)
 [![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=GitHub%20Package&logo=github)](https://github.com/thespad/docker-get_iplayer/packages)
 [![GitLab Container Registry](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=GitLab%20Registry&logo=gitlab)](https://gitlab.com/linuxserver.io/docker-get_iplayer/container_registry)
-[![Image Size](https://img.shields.io/docker/image-size/thespad/docker-get_iplayer/latest?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Size)](#)
+[![Image Size](https://img.shields.io/docker/image-size/thespad/get_iplayer/latest?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Size)](#)
 [![Docker Pulls](https://img.shields.io/docker/pulls/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
 [![Docker Stars](https://img.shields.io/docker/stars/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
 
