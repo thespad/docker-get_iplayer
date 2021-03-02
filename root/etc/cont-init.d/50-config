@@ -1,6 +1,8 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p /config/.get_iplayer
+if [ ! -f "/config/.get_iplayer" ]; then
+	mkdir -p /config/.get_iplayer
+fi
 
 # permissions
 chown -R abc:abc \
