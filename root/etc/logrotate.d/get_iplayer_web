@@ -1,0 +1,8 @@
+/config/log/get_iplayer_web*.log {
+    notifempty
+    weekly
+    rotate 4
+    compress
+    delaycompress
+    missingok
+}
