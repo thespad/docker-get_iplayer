@@ -4,6 +4,10 @@ if [ ! -f "/config/.get_iplayer" ]; then
 	mkdir -p /config/.get_iplayer
 fi
 
+if [ ! -f "/config/log" ]; then
+	mkdir -p /config/log
+fi
+
 # permissions
 chown -R abc:abc \
 	/app/get_iplayer \
