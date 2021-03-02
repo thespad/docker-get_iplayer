@@ -14,6 +14,10 @@ chown -R abc:abc \
 	/config \
 	/downloads
 
+chmod 644 \
+	/etc/logrotate.d/get_iplayer \
+	/etc/logrotate.d/get_iplayer_web
+
 #refresh cache if necessary
 if [[ $INCLUDERADIO == "true" ]]; then
 	if [ ! -f "/config/.get_iplayer/tv.cache" ] || [! -f "/config/.get_iplayer/radio.cache"]; then

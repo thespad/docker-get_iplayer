@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/with-contenv bash
 
 # this cronjob persists removals (but not purges)
 if [ ! -x /usr/sbin/logrotate ]; then
