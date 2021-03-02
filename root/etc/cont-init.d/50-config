@@ -6,7 +6,7 @@ mkdir -p /config/.get_iplayer
 chown -R abc:abc \
 	/app/get_iplayer \
 	/config \
-    /downloads
+	/downloads
 
 if [ ! -f "/config/.get_iplayer/tv.cache" ]; then
 	exec \

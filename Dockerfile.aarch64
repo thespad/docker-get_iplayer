@@ -18,7 +18,8 @@ RUN \
  tar xf \
  	/tmp/get_iplayer.tar.gz -C \
 	/app/get_iplayer/ --strip-components=1 && \
- chmod 755 /app/get_iplayer/get_iplayer /app/get_iplayer/get_iplayer.cgi
+ chmod 755 /app/get_iplayer/get_iplayer /app/get_iplayer/get_iplayer.cgi && \
+ mkdir /downloads
 
 COPY root/ /
 
