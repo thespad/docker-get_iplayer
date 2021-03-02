@@ -25,8 +25,8 @@ Find us at:
 
 # [thespad/get_iplayer](https://github.com/thespad/docker-get_iplayer)
 
-[![GitHub Stars](https://img.shields.io/github/stars/linuxserver/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer)
-[![GitHub Release](https://img.shields.io/github/release/linuxserver/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/thespad/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer)
+[![GitHub Release](https://img.shields.io/github/release/thespad/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer/releases)
 [![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=GitHub%20Package&logo=github)](https://github.com/thespad/docker-get_iplayer/packages)
 [![GitLab Container Registry](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=linuxserver.io&message=GitLab%20Registry&logo=gitlab)](https://gitlab.com/linuxserver.io/docker-get_iplayer/container_registry)
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge)](https://microbadger.com/images/thespad/get_iplayer "Get your own version badge on microbadger.com")
