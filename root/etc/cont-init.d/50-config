@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/.get_iplayer
+
+# permissions
+chown -R abc:abc \
+	/app/get_iplayer \
+	/config \
+    /downloads
+
+if [ ! -f "/config/.get_iplayer/tv.cache" ]; then
+	exec \
+    	s6-setuidgid abc /app/get_iplayer/get_iplayer --refresh
+fi
