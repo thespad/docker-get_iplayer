@@ -1,10 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-if [ ! -f "/config/.get_iplayer" ]; then
+if [ ! -e "/config/.get_iplayer" ]; then
 	mkdir -p /config/.get_iplayer
 fi
 
-if [ ! -f "/config/log" ]; then
+if [ ! -e "/config/log" ]; then
 	mkdir -p /config/log
 fi
 
@@ -14,9 +14,8 @@ chown -R abc:abc \
 	/config \
 	/downloads
 
-chmod 644 \
-	/etc/logrotate.d/get_iplayer \
-	/etc/logrotate.d/get_iplayer_web
+chmod -R +x \
+	/etc/periodic
 
 #refresh cache if necessary
 if [[ $INCLUDERADIO == "true" ]]; then
