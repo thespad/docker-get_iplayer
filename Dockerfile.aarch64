@@ -2,7 +2,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.13
 LABEL maintainer="Adam Beardwood"
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer 
 
-RUN apk add --update --no-cache ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml perl-libwww jq logrotate curl && \
+RUN apk add --update --no-cache ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml perl-libwww jq curl && \
 apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ atomicparsley
 
 RUN \
