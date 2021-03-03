@@ -1,9 +1,4 @@
 #!/usr/bin/with-contenv bash
 
-if [ -z "$BASEURL" ]; then
-    exec \
-        s6-setuidgid abc /app/get_iplayer/get_iplayer.cgi -p 1935 --getiplayer /app/get_iplayer/get_iplayer >> /config/log/get_iplayer_web.log 2>&1;
-else
-    exec \
-        s6-setuidgid abc /app/get_iplayer/get_iplayer.cgi -p 1935 -b "$BASEURL" --getiplayer /app/get_iplayer/get_iplayer >> /config/log/get_iplayer_web.log 2>&1;
-fi
+exec 2>&1 \
+    s6-setuidgid abc /app/get_iplayer/get_iplayer --pvr --quiet
