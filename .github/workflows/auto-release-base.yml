@@ -18,6 +18,6 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.REPO_SCOPED_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "update-base"
           prerelease: true
           title: "Base Image Update"
