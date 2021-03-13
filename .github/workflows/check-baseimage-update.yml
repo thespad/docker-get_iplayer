@@ -1,0 +1,25 @@
+name: Get latest release version
+on:
+  schedule:
+    - cron:  '0 0 * * 0'
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
+      - name: Fetch release version
+        run: |
+          curl -sL https://api.github.com/repos/linuxserver/docker-baseimage-alpine/releases/latest | \
+          jq -r ".tag_name" > release-versions/lsiobase-alpine-latest.txt
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")
+      - name: Commit latest release version
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --global user.name 'TheSpad'
+          git config --global user.email 'git@spad.co.uk'
+          git commit -am "New lsiobase-alpine release version"
+          git push

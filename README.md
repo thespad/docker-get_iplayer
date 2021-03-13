@@ -73,6 +73,7 @@ services:
       - PGID=1000
       - TZ=America/New_York
       - INCLUDERADIO= #optional
+      - BASEURL= #optional
     volumes:
       - </path/to/appdata/config>:/config
       - </path/to/appdata/downloads>:/downloads
@@ -90,6 +91,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=America/New_York \
   -e INCLUDERADIO= `#optional` \
+  -e BASEURL= `#optional` \
   -p 1935:1935 \
   -v </path/to/appdata/config>:/config \
   -v </path/to/appdata/downloads>:/downloads \
@@ -109,6 +111,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=America/New_York` | Specify a timezone to use EG America/New_York |
 | `-e INCLUDERADIO=` | Set to `true` to pre-cache Radio (BBC Sounds) as well as TV shows |
+| `-e BASEURL=` | Set to the full path of your proxied domain if using subfolders |
 | `-v /config` | Contains all relevant configuration files. |
 | `-v /downlaods` | Storage location for all get_iplayer download files. |
 
