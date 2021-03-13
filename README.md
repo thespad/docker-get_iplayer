@@ -113,7 +113,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e INCLUDERADIO=` | Set to `true` to pre-cache Radio (BBC Sounds) as well as TV shows |
 | `-e BASEURL=` | Set to the full path of your proxied domain if using subfolders |
 | `-v /config` | Contains all relevant configuration files. |
-| `-v /downlaods` | Storage location for all get_iplayer download files. |
+| `-v /downloads` | Storage location for all get_iplayer download files. |
 
 ## Environment variables from files (Docker secrets)
 
