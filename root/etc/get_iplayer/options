@@ -1,4 +1,5 @@
 expiry 3540
 nopurge 1
-output /downloads
 quiet 1
+atomicparsley /usr/bin/atomicparsley
+output /downloads
