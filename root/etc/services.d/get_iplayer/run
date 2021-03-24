@@ -4,7 +4,7 @@ if [[ $ENABLEIMPORT == "true" ]]; then
         s6-setuidgid abc /app/get_iplayer/get_iplayer --pvr --quiet 2>&1
 
     exec 2>&1 \
-        s6-setuidgid abc /usr/local/bin/SonarrAutoImport /config/settings.json
+        s6-setuidgid abc /usr/share/dotnet/dotnet /app/sonarrautoimport/SonarrAutoImport.dll /config/settings.json
 else
     exec 2>&1 \
         s6-setuidgid abc /app/get_iplayer/get_iplayer --pvr --quiet
