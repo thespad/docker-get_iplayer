@@ -32,7 +32,6 @@ jobs:
     needs: [check]
     outputs:
       version: ${{ steps.prep.outputs.version }}
-      branch: ${{ steps.prep.outputs.branch }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -149,13 +148,12 @@ jobs:
           TAG=${GITHUB_REF/refs\/tags\//}
           SOURCE=${IMAGE}:${TAG}
           VERSION=${{ needs.build.outputs.version }}
-          BRANCH=${{ needs.build.outputs.branch }}
           [[ -f linux-amd64.Dockerfile ]]  && AMD64=${SOURCE}-linux-amd64
           [[ -f linux-arm64.Dockerfile ]]  && ARM64=${SOURCE}-linux-arm64
           [[ -f linux-arm-v7.Dockerfile ]] && ARMV7=${SOURCE}-linux-arm-v7
-          docker manifest create ${IMAGE}:${TAG}${BRANCH} ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push   ${IMAGE}:${TAG}${BRANCH}
+          docker manifest create ${IMAGE}:${TAG} ${AMD64} ${ARM64} ${ARMV7}
+          docker manifest push   ${IMAGE}:${TAG}
           if [[ ${TAG} != develop ]]; then
             docker manifest create ${IMAGE}:latest ${AMD64} ${ARM64} ${ARMV7}
-            docker manifest push   ${IMAGE}:latest
+            docker manifest push   ${IMAGE}:latest 
           fi
