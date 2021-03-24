@@ -24,7 +24,7 @@ RUN \
 
 COPY root/ /
 
-COPY util/SonarrAutoImport.armhf /usr/local/bin/SonarrAutoImport
+COPY util/SonarrAutoImport.armv7 /usr/local/bin/SonarrAutoImport
 
 EXPOSE 1935
 VOLUME /config
