@@ -2,11 +2,11 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.13
 LABEL maintainer="Adam Beardwood"
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer 
 
-RUN ARCH=dpkgArch="$(dpkg --print-architecture)" \
-  && case "${dpkgArch##*-}" in \
-    amd64) ARCH='arm64';; \
-    arm64) ARCH='arm64';; \
-    armhf) ARCH='armv7';; \
+RUN ARCH= && alpArch="$(uname -m)" \
+  && case "${alpArch##*-}" in \
+    x86_64) ARCH='arm64';; \
+    aarch64) ARCH='arm64';; \
+    armv7l) ARCH='armv7';; \
   esac
 
 RUN apk add --update --no-cache ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml perl-libwww jq curl && \
