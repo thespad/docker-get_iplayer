@@ -155,11 +155,7 @@ jobs:
           [[ -f linux-arm-v7.Dockerfile ]] && ARMV7=${SOURCE}-linux-arm-v7
           docker manifest create ${IMAGE}:${TAG}${BRANCH} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push   ${IMAGE}:${TAG}${BRANCH}
-          docker manifest create ${IMAGE}:${TAG}${BRANCH}-${VERSION//\~/-} ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push   ${IMAGE}:${TAG}${BRANCH}-${VERSION//\~/-}
-          docker manifest create ${IMAGE}:${TAG}-${GITHUB_SHA:0:7} ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push   ${IMAGE}:${TAG}-${GITHUB_SHA:0:7}
-          if [[ ${TAG} == main ]]; then
+          if [[ ${TAG} != develop ]]; then
             docker manifest create ${IMAGE}:latest ${AMD64} ${ARM64} ${ARMV7}
             docker manifest push   ${IMAGE}:latest
           fi
