@@ -1,12 +1,10 @@
-name: release
+name: Build Image On Release
 
 on:
   push:
     tags: 
       - 'v*'
       - 'update-base'
-    branches:
-      - main
 
 jobs:
   release:
