@@ -5,7 +5,7 @@ on:
     tags: 
       - 'v*'
       - 'update-base'
-      
+
 jobs:
 
   check:
@@ -83,21 +83,7 @@ jobs:
           echo ::set-output name=platform::${ARCHITECTURE//-/\/}
           echo ::set-output name=cache::${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}-cache-${{ matrix.architecture }}
           echo ::set-output name=tag::${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}-${GITHUB_SHA:0:7}-${GITHUB_RUN_NUMBER}-${{ matrix.architecture }}
-          VERSION=$(jq -r '.version // empty' < VERSION.json)
-          if [[ -z ${VERSION} ]]; then
-            VERSION=$(date +"%Y%m%d%H%M%S")
-          fi
-          echo ::set-output name=version::${VERSION}
-          BRANCH=$(jq -r '.branch // empty' < VERSION.json)
-          if [[ -n ${BRANCH} ]]; then
-            echo ::set-output name=branch::-${BRANCH}
-          fi
-          ARGS="$(jq -r 'to_entries[] | [(.key | ascii_upcase),.value] | join("=")' < VERSION.json)"
-          ARGS="${ARGS//'%'/'%25'}"
-          ARGS="${ARGS//$'\n'/'%0A'}"
-          ARGS="${ARGS//$'\r'/'%0D'}"
-          echo "::set-output name=build-args::${ARGS}"
-          echo "::set-output name=package-version::${GITHUB_REF//refs\/heads\//}-${GITHUB_SHA:0:7}"
+          echo ::set-output name=package-version::${GITHUB_REF//refs\/heads\//}-${GITHUB_SHA:0:7}
 
       - name: Build and push
         if: "contains(steps.arch_check.outputs.check, 'passed')"
