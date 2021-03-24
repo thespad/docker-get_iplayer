@@ -17,6 +17,9 @@ chown -R abc:abc \
 chmod -R +x \
 	/etc/periodic
 
+chmod -R +x \
+	/usr/local/bin/SonarrAutoImport
+
 #refresh cache if necessary
 if [[ $INCLUDERADIO == "true" ]]; then
 	if [ ! -f "/config/.get_iplayer/tv.cache" ] || [! -f "/config/.get_iplayer/radio.cache"]; then
