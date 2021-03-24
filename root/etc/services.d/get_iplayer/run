@@ -1,4 +1,11 @@
 #!/usr/bin/with-contenv bash
 
-exec 2>&1 \
-    s6-setuidgid abc /app/get_iplayer/get_iplayer --pvr --quiet
+if [[ $ENABLEIMPORT == "true" ]]; then
+        s6-setuidgid abc /app/get_iplayer/get_iplayer --pvr --quiet 2>&1
+
+    exec 2>&1 \
+        s6-setuidgid abc /usr/local/bin/SonarrAutoImport /config/settings.json
+else
+    exec 2>&1 \
+        s6-setuidgid abc /app/get_iplayer/get_iplayer --pvr --quiet
+fi
