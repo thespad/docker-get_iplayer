@@ -5,6 +5,8 @@ on:
     tags: 
       - 'v*'
       - 'update-base'
+    branches:
+      - main
 
 jobs:
   release:
