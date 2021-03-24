@@ -2,8 +2,7 @@ name: release
 
 on:
   push:
-    tags: 'v*'
-    tags: 'update-base'
+    tags: 'v*develop'
 
 jobs:
   release:
