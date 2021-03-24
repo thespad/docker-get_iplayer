@@ -75,15 +75,20 @@ jobs:
         run: |
           ARCHITECTURE=${{ matrix.architecture }}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          echo ::set-output name=title::${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}
+          echo ::set-output name=title::thespad/get_iplayer
           echo ::set-output name=revision::${GITHUB_SHA}
-          echo ::set-output name=source::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/${GITHUB_REF//refs\/heads\//}
+          echo ::set-output name=source::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/${GITHUB_REF/refs\/tags\//}
           echo ::set-output name=vendor::${{ github.repository_owner }}
           echo ::set-output name=url::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/master/README.md
           echo ::set-output name=platform::${ARCHITECTURE//-/\/}
-          echo ::set-output name=cache::${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}-cache-${{ matrix.architecture }}
-          echo ::set-output name=tag::${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}-${GITHUB_SHA:0:7}-${GITHUB_RUN_NUMBER}-${{ matrix.architecture }}
-          echo ::set-output name=package-version::${GITHUB_REF//refs\/heads\//}-${GITHUB_SHA:0:7}
+          echo ::set-output name=cache::thespad/get_iplayer:${GITHUB_REF/refs\/tags\//}-cache-${{ matrix.architecture }}
+          echo ::set-output name=tag::thespad/get_iplayer:${GITHUB_REF/refs\/tags\//}-${{ matrix.architecture }}
+          VERSION=sha-${GITHUB_SHA::8}
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF/refs\/tags\//}
+          fi
+          echo ::set-output name=VERSION::${VERSION}
+          echo ::set-output name=package-version::${GITHUB_REF/refs\/tags\//}-${GITHUB_SHA:0:7}
 
       - name: Build and push
         if: "contains(steps.arch_check.outputs.check, 'passed')"
@@ -146,9 +151,9 @@ jobs:
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
-          IMAGE=${{ matrix.registry }}/${GITHUB_REPOSITORY}
-          TAG=${GITHUB_REF//refs\/heads\//}
-          SOURCE=${IMAGE}:${TAG}-${GITHUB_SHA:0:7}-${GITHUB_RUN_NUMBER}
+          IMAGE=${{ matrix.registry }}/thespad/get_iplayer
+          TAG=${GITHUB_REF/refs\/tags\//}
+          SOURCE=${IMAGE}:${TAG}
           VERSION=${{ needs.build.outputs.version }}
           BRANCH=${{ needs.build.outputs.branch }}
           [[ -f linux-amd64.Dockerfile ]]  && AMD64=${SOURCE}-linux-amd64
