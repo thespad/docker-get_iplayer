@@ -87,7 +87,7 @@ jobs:
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF/refs\/tags\//}
           fi
-          echo ::set-output name=VERSION::${VERSION}
+          echo ::set-output name=version::${VERSION}
           echo ::set-output name=package-version::${GITHUB_REF/refs\/tags\//}-${GITHUB_SHA:0:7}
 
       - name: Build and push
@@ -114,7 +114,6 @@ jobs:
             GITHUB_TOKEN=${{ secrets.GHCR_PAT }}
             BUILD_ARCHITECTURE=${{ matrix.architecture }}
             PACKAGE_VERSION=${{ steps.prep.outputs.package-version }}
-            ${{ steps.prep.outputs.build-args }}
 
       - name: Run tests
         if: "contains(steps.arch_check.outputs.check, 'passed')"
