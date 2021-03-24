@@ -148,12 +148,12 @@ jobs:
           TAG=${GITHUB_REF/refs\/tags\//}
           SOURCE=${IMAGE}:${TAG}
           VERSION=${{ needs.build.outputs.version }}
-          [[ -f linux-amd64.Dockerfile ]]  && AMD64=${SOURCE}-linux-amd64
-          [[ -f linux-arm64.Dockerfile ]]  && ARM64=${SOURCE}-linux-arm64
-          [[ -f linux-arm-v7.Dockerfile ]] && ARMV7=${SOURCE}-linux-arm-v7
-          docker manifest create ${IMAGE}:${TAG} ${AMD64} ${ARM64} ${ARMV7}
+          [[ -f linux-amd64.Dockerfile ]]  && AMD64=amd64
+          [[ -f linux-arm64.Dockerfile ]]  && ARM64=arm64
+          [[ -f linux-arm-v7.Dockerfile ]] && ARMV7=armv7
+          docker manifest create ${IMAGE}:${TAG} ${IMAGE}:${TAG}-${AMD64} ${IMAGE}:${TAG}-${ARM64} ${IMAGE}:${TAG}-${ARMV7}
           docker manifest push   ${IMAGE}:${TAG}
           if [[ ${TAG} != develop ]]; then
-            docker manifest create ${IMAGE}:latest ${AMD64} ${ARM64} ${ARMV7}
+            docker manifest create ${IMAGE}:latest ${IMAGE}:latest-${AMD64} ${IMAGE}:latest-${ARM64} ${IMAGE}:latest-${ARMV7}
             docker manifest push   ${IMAGE}:latest 
           fi
