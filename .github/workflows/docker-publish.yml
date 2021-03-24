@@ -2,7 +2,11 @@ name: release
 
 on:
   push:
-    tags: 'develop'
+    tags: 
+      - 'v*'
+      - 'update-base'
+    branches:
+      - main
 
 jobs:
   release:
@@ -48,9 +52,9 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             docker.io/thespad/get_iplayer:${{ steps.prep.outputs.VERSION }}
-            docker.io/thespad/get_iplayer:develop
+            docker.io/thespad/get_iplayer:latest
             ghcr.io/thespad/get_iplayer:${{ steps.prep.outputs.VERSION }}
-            ghcr.io/thespad/get_iplayer:develop
+            ghcr.io/thespad/get_iplayer:latest
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
