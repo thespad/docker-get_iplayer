@@ -89,7 +89,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e TZ=America/New_York` | Specify a timezone to use EG America/New_York |
 | `-e INCLUDERADIO=` | Set to `true` to pre-cache Radio (BBC Sounds) as well as TV shows |
 | `-e BASEURL=` | Set to the full path of your proxied domain if using subfolders |
-| `-e ENABLEIMPORT=` | Enable [SonarrAutoImport](https://github.com/Webreaper/SonarrAutoImport/). Place settings.json into the /config mount|
+| `-e ENABLEIMPORT=` | Set to `true` to enable [SonarrAutoImport](https://github.com/Webreaper/SonarrAutoImport/). Place settings.json into the /config mount|
 | `-v /config` | Contains all relevant configuration files. |
 | `-v /downloads` | Storage location for all get_iplayer download files. |
 
