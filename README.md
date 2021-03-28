@@ -196,4 +196,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **24.03.21:** - Added SonarrAutoImport
 * **02.03.21:** - Initial Release.
