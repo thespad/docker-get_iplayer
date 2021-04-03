@@ -31,7 +31,7 @@ RUN \
 
 COPY root/ /
 
-COPY util/multi/ /app/sonarrautoimport/
+COPY util/ /app/sonarrautoimport/
 
 EXPOSE 1935
 VOLUME /config
