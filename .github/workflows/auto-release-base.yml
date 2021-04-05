@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'release-versions/*'
+    branches:
+      - 'main'
 
 jobs:
   pre-release:
