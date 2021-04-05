@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - 'release-versions/*'
-    tags-ignore:
-      - "*"
 
 jobs:
   pre-release:
