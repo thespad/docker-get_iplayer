@@ -1,8 +1,8 @@
 We bring you another container release featuring:
 
- * regular and timely application updates
- * easy user mappings (PGID, PUID)
- * custom base image with s6 overlay
+ * Regular and timely application updates
+ * Easy user mappings (PGID, PUID)
+ * Custom base image with s6 overlay
 
 # [thespad/get_iplayer](https://github.com/thespad/docker-get_iplayer)
 
@@ -12,6 +12,8 @@ We bring you another container release featuring:
 [![Image Size](https://img.shields.io/docker/image-size/thespad/get_iplayer/latest?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Size)](#)
 [![Docker Pulls](https://img.shields.io/docker/pulls/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
 [![Docker Stars](https://img.shields.io/docker/stars/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
+[![License](https://img.shields.io/github/license/thespad/docker-get_iplayer?color=94398d&logo=Github&logoColor=ffffff&style=for-the-badge)](#)
+[![Commits](https://img.shields.io/github/commits-since/thespad/docker-get_iplayer/latest?color=94398d&include_prereleases&logo=github&style=for-the-badge)](#)
 
 [get_iplayer](https://github.com/get-iplayer/get_iplayer/) is a BBC iPlayer/BBC Sounds Indexing Tool and PVR
 
@@ -83,7 +85,7 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 1935` | http gui |
+| `-p 1935` | Web GUI |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=America/New_York` | Specify a timezone to use EG America/New_York |
