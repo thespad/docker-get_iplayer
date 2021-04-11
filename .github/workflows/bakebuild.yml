@@ -25,7 +25,7 @@ jobs:
           images: |
             ${{ env.DOCKERHUB_SLUG }}
             ${{ env.GHCR_SLUG }}
-          label-custom: |
+          labels: |
             org.opencontainers.image.title=get_iplayer
             org.opencontainers.image.description=get_iplayer
             org.opencontainers.image.vendor=TheSpad
