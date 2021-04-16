@@ -4,9 +4,7 @@ ENV GETIPLAYER_PROFILE=/config/.get_iplayer
 
 RUN \
   apk add --update --no-cache ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml perl-libwww jq curl icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
-  apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ atomicparsley
-
-RUN \
+  apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ atomicparsley && \
   echo "**** install get_iplayer ****" && \
   mkdir -p /app/get_iplayer && \
   if [ -z ${GET_IPLAYER_RELEASE+x} ]; then \
