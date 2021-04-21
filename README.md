@@ -30,6 +30,11 @@ The architectures supported by this image are:
 | x86-64 | latest |
 | arm64 | latest |
 
+## Application Setup
+
+Webui is accessible at http://SERVERIP:PORT
+More info at [get_iplayer](https://github.com/get-iplayer/get_iplayer/).
+
 ## Usage
 
 Here are some example snippets to help you get started creating a container.
@@ -125,14 +130,6 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
 
-
-&nbsp;
-## Application Setup
-
-Webui is accessible at http://SERVERIP:PORT
-More info at [get_iplayer](https://github.com/get-iplayer/get_iplayer/).
-
-
 ## Support Info
 
 * Shell access whilst the container is running: `docker exec -it get_iplayer /bin/bash`
@@ -189,12 +186,6 @@ docker build \
   -t ghcr.io/thespad/get_iplayer:latest .
 ```
 
-The ARM variants can be built on x86_64 hardware using `multiarch/qemu-user-static`
-```
-docker run --rm --privileged multiarch/qemu-user-static:register --reset
-```
-
-Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64`.
 
 ## Versions
 
