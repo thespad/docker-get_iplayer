@@ -1,16 +1,16 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v3.1",
+    "name": ".NETCoreApp,Version=v5.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    ".NETCoreApp,Version=v5.0": {
       "SonarrAutoImport/1.0.0": {
         "dependencies": {
-          "CommandLineParser": "2.7.82",
-          "RestSharp": "106.10.1",
-          "Serilog": "2.9.0",
+          "CommandLineParser": "2.8.0",
+          "RestSharp": "106.11.7",
+          "Serilog": "2.10.0",
           "Serilog.Sinks.Console": "3.1.1",
           "Serilog.Sinks.File": "4.1.0"
         },
@@ -18,21 +18,21 @@
           "SonarrAutoImport.dll": {}
         }
       },
-      "CommandLineParser/2.7.82": {
+      "CommandLineParser/2.8.0": {
         "runtime": {
           "lib/netstandard2.0/CommandLine.dll": {
-            "assemblyVersion": "2.7.82.0",
-            "fileVersion": "2.7.82.0"
+            "assemblyVersion": "2.8.0.0",
+            "fileVersion": "2.8.0.0"
           }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
-      "RestSharp/106.10.1": {
+      "RestSharp/106.11.7": {
         "runtime": {
           "lib/netstandard2.0/RestSharp.dll": {
-            "assemblyVersion": "106.0.0.0",
-            "fileVersion": "106.10.1.0"
+            "assemblyVersion": "106.11.7.0",
+            "fileVersion": "106.11.7.0"
           }
         }
       },
@@ -42,17 +42,17 @@
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
-      "Serilog/2.9.0": {
+      "Serilog/2.10.0": {
         "runtime": {
-          "lib/netstandard2.0/Serilog.dll": {
+          "lib/netstandard2.1/Serilog.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.9.0.0"
+            "fileVersion": "2.10.0.0"
           }
         }
       },
       "Serilog.Sinks.Console/3.1.1": {
         "dependencies": {
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "System.Console": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
@@ -66,7 +66,7 @@
       },
       "Serilog.Sinks.File/4.1.0": {
         "dependencies": {
-          "Serilog": "2.9.0",
+          "Serilog": "2.10.0",
           "System.IO.FileSystem": "4.0.1",
           "System.Text.Encoding.Extensions": "4.0.11",
           "System.Threading.Timer": "4.0.1"
@@ -230,12 +230,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "CommandLineParser/2.7.82": {
+    "CommandLineParser/2.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JnjxBu4++EDnYtDzHskiPrPJ9hAna8amu8qlQx8J+2oZnPddDnkR/0FFtQMDz0Cs0YF2lbyW3OmYfRmIrLNY0A==",
-      "path": "commandlineparser/2.7.82",
-      "hashPath": "commandlineparser.2.7.82.nupkg.sha512"
+      "sha512": "sha512-eco2HlKQBY4Joz9odHigzGpVzv6pjsXnY5lziioMveQxr+i2Z7xYcIOMeZTgYiqnMtMAbXMXsVhrNfWO5vJS8Q==",
+      "path": "commandlineparser/2.8.0",
+      "hashPath": "commandlineparser.2.8.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -251,12 +251,12 @@
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
     },
-    "RestSharp/106.10.1": {
+    "RestSharp/106.11.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MhR4w8LbArVaRA5T/oAR3ZnF852QXtDXRBO84GsvyYzsm7FsjXHJ+JaM8x/nR/B/OCB1WbolGH7hqMT1GZpNJw==",
-      "path": "restsharp/106.10.1",
-      "hashPath": "restsharp.106.10.1.nupkg.sha512"
+      "sha512": "sha512-NzndH096CTulvq+ihr7u1mBJ29oukdi9A8bypQJk+kaHxbRzTTrtgsEEQAb04ptTUZmQa7cgo7uF5z7NuEPX1Q==",
+      "path": "restsharp/106.11.7",
+      "hashPath": "restsharp.106.11.7.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
@@ -265,12 +265,12 @@
       "path": "runtime.native.system/4.3.0",
       "hashPath": "runtime.native.system.4.3.0.nupkg.sha512"
     },
-    "Serilog/2.9.0": {
+    "Serilog/2.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QzcrD33A3+CsVvwi1I5CSei67ikQnkGrw7SscgL+vZTghaC2aNYg8fiUcedXHzKJFNjgje9rBjzwYGQTKEaXaA==",
-      "path": "serilog/2.9.0",
-      "hashPath": "serilog.2.9.0.nupkg.sha512"
+      "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+      "path": "serilog/2.10.0",
+      "hashPath": "serilog.2.10.0.nupkg.sha512"
     },
     "Serilog.Sinks.Console/3.1.1": {
       "type": "package",

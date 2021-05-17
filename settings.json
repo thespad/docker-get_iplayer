@@ -1,0 +1,18 @@
+{
+  "radarr": {
+    "url" : "http://radarr:7878",
+    "apiKey" : "dbf4cd11a7b5418eab337e20de6a17b9",
+    "mappingPath" : "/data/dwn/iPlayer",
+    "downloadsFolder" : "/config",
+    "trimFolders" : "true",
+    "importMode" : "Move"
+  },
+  "sonarr": {
+    "url" : "http://sonarr:8989",
+    "apiKey" : "b70041ba66be4f42b3ef1cc248926bc2",
+    "mappingPath" : "/data/dwn/iPlayer",
+    "downloadsFolder" : "/config",
+    "trimFolders" : "true",
+    "importMode" : "Move"
+   }
+}

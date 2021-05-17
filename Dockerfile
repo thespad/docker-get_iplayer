@@ -26,7 +26,7 @@ RUN \
     /tmp/dotnet-install.sh -L \
     "https://dot.net/v1/dotnet-install.sh" && \
   chmod +x /tmp/dotnet-install.sh && \
-  /tmp/dotnet-install.sh -c 3.1 --runtime dotnet --os linux-musl --install-dir /usr/share/dotnet && \
+  /tmp/dotnet-install.sh -c 5.0 --runtime dotnet --os linux-musl --install-dir /usr/share/dotnet && \
   rm /tmp/dotnet-install.sh
 
 COPY root/ /
