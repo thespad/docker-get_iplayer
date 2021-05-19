@@ -2,7 +2,7 @@ We bring you another container release featuring:
 
 * Regular and timely application updates
 * Easy user mappings (PGID, PUID)
-* Custom base image with s6 overlay
+* Linuxserver.io base image with s6 overlay
 
 # [thespad/get_iplayer](https://github.com/thespad/docker-get_iplayer)
 
