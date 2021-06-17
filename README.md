@@ -175,5 +175,6 @@ docker build \
 
 ## Versions
 
+* **17.06.21:** - Rebase to Alpine 3.14
 * **24.03.21:** - Added SonarrAutoImport
 * **02.03.21:** - Initial Release.
