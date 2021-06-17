@@ -5,6 +5,9 @@ on:
     tags: 
       - 'v*'
       - 'update-base'
+  pull_request:
+    branches:
+      - 'main'      
 
 env:
   DOCKERHUB_SLUG: thespad/get_iplayer
