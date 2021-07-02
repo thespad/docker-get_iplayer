@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}
       -
         name: Build and push
-        uses: docker/bake-action@v1.4.2
+        uses: docker/bake-action@v1.5.0
         with:
           files: |
             ./docker-bake.hcl
