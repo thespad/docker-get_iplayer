@@ -1,0 +1,90 @@
+name: Check for update and release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 10 * * *'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      APP_NAME: get_iplayer
+    outputs:
+      image_release: ${{ steps.build_check.outputs.image_release }}
+      update_available: ${{ steps.build_check.outputs.update_available }}
+      app_name: ${{ steps.build_check.outputs.app_name }}
+    steps:    
+      - 
+        name: Check if we should release
+        id: build_check
+        run: |
+          echo "**** Retrieving external version ****"
+          EXT_RELEASE=$(curl -sX GET "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]');
+          if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
+            echo "**** Can't retrieve external version, exiting ****"
+            exit 1
+          fi
+
+          EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g')
+
+          echo "**** External version: ${EXT_RELEASE} ****"
+          echo "**** Retrieving last pushed version ****"
+
+          image="thespad/${{ env.APP_NAME }}"
+          tag="latest"
+          token=$(curl -sX GET \
+            "https://ghcr.io/token?scope=repository%3Athespad%2F${{ env.APP_NAME }}%3Apull" \
+            | jq -r '.token')
+          multidigest=$(curl -s \
+            --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
+            --header "Authorization: Bearer ${token}" \
+            "https://ghcr.io/v2/${image}/manifests/${tag}" \
+            | jq -r 'first(.manifests[].digest)')
+          digest=$(curl -s \
+            --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
+            --header "Authorization: Bearer ${token}" \
+            "https://ghcr.io/v2/${image}/manifests/${multidigest}" \
+            | jq -r '.config.digest')
+          image_info=$(curl -sL \
+            --header "Authorization: Bearer ${token}" \
+            "https://ghcr.io/v2/${image}/blobs/${digest}" \
+            | jq -r '.config')
+
+          IMAGE_RELEASE=$(echo ${image_info} | jq -r '.Labels."org.opencontainers.image.version"')
+          IMAGE_VERSION=$(echo ${IMAGE_RELEASE} | awk -F'-spad' '{print $1}')
+
+          if [ -z "${IMAGE_VERSION}" ]; then
+            echo "**** Can't retrieve last pushed version, exiting ****"
+            exit 1
+          fi
+
+          echo "**** Last pushed version: ${IMAGE_VERSION} ****"
+
+          if [ "${EXT_RELEASE}" == "${IMAGE_VERSION}" ]; then
+            echo "**** Version ${EXT_RELEASE} already pushed, not releasing ****"
+            echo ::set-output name=update_available::false
+            exit 0
+          fi
+
+          echo "**** Version ${EXT_RELEASE} has not been pushed, releasing ****"
+          echo ::set-output name=update_available::true
+          IMAGE_RELEASE=${EXT_RELEASE}
+          echo ::set-output name=image_release::${IMAGE_RELEASE}
+
+          echo ::set-output name=image_release::${APP_NAME}
+
+  release:
+    runs-on: ubuntu-latest
+    needs: check
+    if:  ${{ needs.check.outputs.update_available == 'true' }}
+    steps:  
+      - 
+        name: Checkout
+        uses: actions/checkout@v2
+      - name: Do release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: "* Updated ${{ needs.check.outputs.app_name }} to v${{ needs.check.outputs.image_release }}"
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
+          tag_name: ${{ needs.check.outputs.image_release }}-spad001
