@@ -3,7 +3,7 @@ on:
   schedule:
     - cron:  '0 0 * * 0'
 jobs:
-  get-version:
+  get-baseimage-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
