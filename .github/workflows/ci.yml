@@ -26,7 +26,7 @@ jobs:
             exit 1
           fi
 
-          EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g')
+          EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g' | cut -d 'v' -f 2)
 
           echo "**** External version: ${EXT_RELEASE} ****"
           echo "**** Retrieving last pushed version ****"
@@ -69,10 +69,10 @@ jobs:
 
           echo "**** Version ${EXT_RELEASE} has not been pushed, releasing ****"
           echo ::set-output name=update_available::true
-          IMAGE_RELEASE=${EXT_RELEASE}
+          IMAGE_RELEASE=$(${EXT_RELEASE} | cut -d 'v' -f 2)
           echo ::set-output name=image_release::${IMAGE_RELEASE}
 
-          echo ::set-output name=image_release::${APP_NAME}
+          echo ::set-output name=app_name::${APP_NAME}
 
   release:
     runs-on: ubuntu-latest
@@ -85,6 +85,6 @@ jobs:
       - name: Do release
         uses: softprops/action-gh-release@v1
         with:
-          body: "* Updated ${{ needs.check.outputs.app_name }} to v${{ needs.check.outputs.image_release }}"
+          body: "* Updated ${{ needs.check.outputs.app_name }} to ${{ needs.check.outputs.image_release }}"
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
           tag_name: ${{ needs.check.outputs.image_release }}-spad001

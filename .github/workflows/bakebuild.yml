@@ -1,10 +1,8 @@
 name: Build Image On Release
 
 on:
-  push:
-    tags: 
-      - 'v*'
-      - 'update-base'
+  release:
+    types: [ published ]
   pull_request:
     branches:
       - 'main' 
