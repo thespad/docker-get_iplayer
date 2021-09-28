@@ -69,7 +69,7 @@ jobs:
 
           echo "**** Version ${EXT_RELEASE} has not been pushed, releasing ****"
           echo ::set-output name=update_available::true
-          IMAGE_RELEASE=$(${EXT_RELEASE} | cut -d 'v' -f 2)
+          IMAGE_RELEASE=$(echo ${EXT_RELEASE} | cut -d 'v' -f 2)
           echo ::set-output name=image_release::${IMAGE_RELEASE}
 
           echo ::set-output name=app_name::${APP_NAME}
