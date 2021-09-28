@@ -26,7 +26,7 @@ jobs:
             exit 1
           fi
 
-          EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g' | cut -d 'v' -f 2)
+          EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g')
 
           echo "**** External version: ${EXT_RELEASE} ****"
           echo "**** Retrieving last pushed version ****"
