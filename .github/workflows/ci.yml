@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: get_iplayer
+      RELEASE_CHECK: $(curl -sX GET "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]');
     outputs:
       image_release: ${{ steps.build_check.outputs.image_release }}
       update_available: ${{ steps.build_check.outputs.update_available }}
@@ -20,7 +21,7 @@ jobs:
         id: build_check
         run: |
           echo "**** Retrieving external version ****"
-          EXT_RELEASE=$(curl -sX GET "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]');
+          EXT_RELEASE=${RELEASE_CHECK}
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
             echo "**** Can't retrieve external version, exiting ****"
             exit 1
