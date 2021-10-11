@@ -11,6 +11,7 @@ jobs:
     env:
       APP_NAME: get_iplayer
       RELEASE_TYPE: github
+      RELEASE_REPO: "null"
       RELEASE_URL: https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest
     outputs:
       image_release: ${{ steps.build_check.outputs.image_release }}
@@ -26,11 +27,8 @@ jobs:
             github)
               EXT_RELEASE=$(curl -sX GET ${RELEASE_URL} | awk '/tag_name/{print $4;exit}' FS='[""]');
               ;;
-            alpine_314)
-              EXT_RELEASE=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/3.14/main/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp && awk '/^P:'"${RELEASE_URL}"'$/,/V:/' /tmp/APKINDEX | sed -n 2p | sed 's/^V://');
-              ;;
-            alpine_edge)
-              EXT_RELEASE=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp && awk '/^P:'"${RELEASE_URL}"'$/,/V:/' /tmp/APKINDEX | sed -n 2p | sed 's/^V://');
+            alpine)
+              EXT_RELEASE=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/${RELEASE_REPO}/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp && awk '/^P:'"${RELEASE_URL}"'$/,/V:/' /tmp/APKINDEX | sed -n 2p | sed 's/^V://');
               ;;
           esac      
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
