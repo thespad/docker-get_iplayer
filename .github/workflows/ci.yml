@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: get_iplayer
-      RELEASE_CHECK: $(curl -sX GET "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]');
+      RELEASE_TYPE: github
+      RELEASE_URL: https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest
     outputs:
       image_release: ${{ steps.build_check.outputs.image_release }}
       update_available: ${{ steps.build_check.outputs.update_available }}
@@ -21,7 +22,17 @@ jobs:
         id: build_check
         run: |
           echo "**** Retrieving external version ****"
-          EXT_RELEASE=${RELEASE_CHECK}
+          case ${RELEASE_TYPE} in
+            github)
+              EXT_RELEASE=$(curl -sX GET ${RELEASE_URL} | awk '/tag_name/{print $4;exit}' FS='[""]');
+              ;;
+            alpine_314)
+              EXT_RELEASE=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/3.14/main/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp && awk '/^P:'"${RELEASE_URL}"'$/,/V:/' /tmp/APKINDEX | sed -n 2p | sed 's/^V://');
+              ;;
+            alpine_edge)
+              EXT_RELEASE=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp && awk '/^P:'"${RELEASE_URL}"'$/,/V:/' /tmp/APKINDEX | sed -n 2p | sed 's/^V://');
+              ;;
+          esac      
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
             echo "**** Can't retrieve external version, exiting ****"
             exit 1
