@@ -45,28 +45,32 @@ jobs:
           tag="latest"
           token=$(curl -sX GET \
             "https://ghcr.io/token?scope=repository%3Athespad%2F${{ env.APP_NAME }}%3Apull" \
-            | jq -r '.token')
-          multidigest=$(curl -s \
-            --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
-            --header "Authorization: Bearer ${token}" \
-            "https://ghcr.io/v2/${image}/manifests/${tag}" \
-            | jq -r 'first(.manifests[].digest)')
-          digest=$(curl -s \
-            --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
-            --header "Authorization: Bearer ${token}" \
-            "https://ghcr.io/v2/${image}/manifests/${multidigest}" \
-            | jq -r '.config.digest')
-          image_info=$(curl -sL \
-            --header "Authorization: Bearer ${token}" \
-            "https://ghcr.io/v2/${image}/blobs/${digest}" \
-            | jq -r '.config')
+            | jq -r '.[]')
+          if [ "${token:0:1}" == "[" ]; then
+            IMAGE_VERSION="null"
+          else
+            multidigest=$(curl -s \
+              --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
+              --header "Authorization: Bearer ${token}" \
+              "https://ghcr.io/v2/${image}/manifests/${tag}" \
+              | jq -r 'first(.manifests[].digest)')
+            digest=$(curl -s \
+              --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
+              --header "Authorization: Bearer ${token}" \
+              "https://ghcr.io/v2/${image}/manifests/${multidigest}" \
+              | jq -r '.config.digest')
+            image_info=$(curl -sL \
+              --header "Authorization: Bearer ${token}" \
+              "https://ghcr.io/v2/${image}/blobs/${digest}" \
+              | jq -r '.config')
 
-          IMAGE_RELEASE=$(echo ${image_info} | jq -r '.Labels."org.opencontainers.image.version"')
-          IMAGE_VERSION=$(echo ${IMAGE_RELEASE} | awk -F'-spad' '{print $1}')
+            IMAGE_RELEASE=$(echo ${image_info} | jq -r '.Labels."org.opencontainers.image.version"')
+            IMAGE_VERSION=$(echo ${IMAGE_RELEASE} | awk -F'-spad' '{print $1}')
 
-          if [ -z "${IMAGE_VERSION}" ]; then
-            echo "**** Can't retrieve last pushed version, exiting ****"
-            exit 1
+            if [ -z "${IMAGE_VERSION}" ]; then
+              echo "**** Can't retrieve last pushed version, exiting ****"
+              exit 1
+            fi
           fi
 
           echo "**** Last pushed version: ${IMAGE_VERSION} ****"
