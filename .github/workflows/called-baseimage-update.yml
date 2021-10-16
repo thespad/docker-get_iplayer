@@ -1,0 +1,15 @@
+name: Check for base image updates
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * 0'
+
+jobs:
+  call-workflow:
+    uses: thespad/actions/.github/workflows/check-baseimage-update.yml@v2
+    with:
+      repo_owner: ${{ github.repository_owner }}
+      baseimage: "alpine"
+      email: "git@spad.co.uk"
+    secrets:
+      repo_scoped_token: ${{ secrets.repo_scoped_token }}

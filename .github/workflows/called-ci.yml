@@ -1,0 +1,17 @@
+name: Check for update and release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 11 * * *'
+
+jobs:
+  call-workflow:
+    uses: thespad/actions/.github/workflows/ci.yml@v2
+    with:
+      repo_owner: ${{ github.repository_owner }}
+      app_name: "get_iplayer"
+      release_type: "github"
+      release_url: "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest"
+    secrets:
+      repo_scoped_token: ${{ secrets.repo_scoped_token }}

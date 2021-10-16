@@ -1,0 +1,19 @@
+name: Build Image On Release
+
+on:
+  release:
+    types: [ published ]
+  pull_request:
+    branches:
+      - 'main'
+    types: [ assigned ]
+
+jobs:
+  call-workflow:
+    uses: thespad/actions/.github/workflows/bakebuild.yml@v2
+    with:
+      repo_owner: ${{ github.repository_owner }}
+      app_name: "changedetection.io"
+      dockerhub_user: "thespad"
+    secrets:
+      dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
