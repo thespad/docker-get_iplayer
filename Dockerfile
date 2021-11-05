@@ -1,4 +1,4 @@
-FROM lscr.io/linuxserver/baseimage-alpine:3.14
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14
 LABEL maintainer="Adam Beardwood"
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer 
 ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
