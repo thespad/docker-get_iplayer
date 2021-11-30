@@ -1,4 +1,4 @@
-name: Build Image On Release
+name: Scan Image For Vulnerabilities
 
 on:
   workflow_dispatch:
