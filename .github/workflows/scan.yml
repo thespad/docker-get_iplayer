@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  bake:
+  scan:
     runs-on: ubuntu-latest
     steps:
       -
@@ -14,4 +14,4 @@ jobs:
         name: Scan for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v1
         with:
-          image: ghcr.io/TheSpad/get_iplayer:latest
+          image: ghcr.io/thespad/get_iplayer:latest
