@@ -6,10 +6,11 @@ on:
 
 jobs:
   call-workflow:
-    uses: thespad/actions/.github/workflows/check-baseimage-update.yml@v3
+    uses: thespad/actions/.github/workflows/check-baseimage-update.yml@v4
     with:
       repo_owner: ${{ github.repository_owner }}
       baseimage: "alpine"
       email: "git@spad.co.uk"
+      app_name: "dive"
     secrets:
       repo_scoped_token: ${{ secrets.repo_scoped_token }}
