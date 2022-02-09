@@ -10,7 +10,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: thespad/actions/.github/workflows/bakebuild.yml@v3
+    uses: thespad/actions/.github/workflows/bakebuild.yml@v4
     with:
       repo_owner: ${{ github.repository_owner }}
       app_name: "get_iplayer"
