@@ -11,6 +11,6 @@ jobs:
       repo_owner: ${{ github.repository_owner }}
       baseimage: "alpine"
       email: "git@spad.co.uk"
-      app_name: "dive"
+      app_name: "get_iplayer"
     secrets:
       repo_scoped_token: ${{ secrets.repo_scoped_token }}
