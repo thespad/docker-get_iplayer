@@ -1,19 +1,15 @@
-We bring you another container release featuring:
-
-* Regular and timely application updates
-* Easy user mappings (PGID, PUID)
-* Linuxserver.io base image with s6 overlay
-
 # [thespad/get_iplayer](https://github.com/thespad/docker-get_iplayer)
 
-[![GitHub Stars](https://img.shields.io/github/stars/thespad/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer)
-[![GitHub Release](https://img.shields.io/github/release/thespad/docker-get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer/releases)
-[![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=thespad&message=GitHub%20Package&logo=github)](https://github.com/thespad/docker-get_iplayer/packages)
-[![Image Size](https://img.shields.io/docker/image-size/thespad/get_iplayer/latest?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Size)](#)
-[![Docker Pulls](https://img.shields.io/docker/pulls/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
-[![Docker Stars](https://img.shields.io/docker/stars/thespad/get_iplayer.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
-[![License](https://img.shields.io/github/license/thespad/docker-get_iplayer?color=94398d&logo=Github&logoColor=ffffff&style=for-the-badge)](#)
-[![Commits](https://img.shields.io/github/commits-since/thespad/docker-get_iplayer/latest?color=94398d&include_prereleases&logo=github&style=for-the-badge)](#)
+[![GitHub Release](https://img.shields.io/github/release/thespad/docker-get_iplayer.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer/releases)
+![Commits](https://img.shields.io/github/commits-since/thespad/docker-get_iplayer/latest?color=26689A&include_prereleases&logo=github&style=for-the-badge)
+![Image Size](https://img.shields.io/docker/image-size/thespad/get_iplayer/latest?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Size)
+[![Docker Pulls](https://img.shields.io/docker/pulls/thespad/get_iplayer.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
+[![GitHub Stars](https://img.shields.io/github/stars/thespad/docker-get_iplayer.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer)
+[![Docker Stars](https://img.shields.io/docker/stars/thespad/get_iplayer.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
+
+[![ci](https://img.shields.io/github/workflow/status/thespad/docker-get_iplayer/Check%20for%20update%20and%20release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Upstream%20Updates)](https://github.com/thespad/docker-get_iplayer/actions/workflows/called-ci.yml)
+[![ci](https://img.shields.io/github/workflow/status/thespad/docker-get_iplayer/Check%20for%20base%20image%20updates.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Baseimage%20Updates)](https://github.com/thespad/docker-get_iplayer/actions/workflows/called-baseimage-update.yml)
+[![ci](https://img.shields.io/github/workflow/status/thespad/docker-get_iplayer/Build%20Image%20On%20Release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Build%20Image)](https://github.com/thespad/docker-get_iplayer/actions/workflows/called-bakebuild.yml)
 
 [get_iplayer](https://github.com/get-iplayer/get_iplayer/) is a BBC iPlayer/BBC Sounds Indexing Tool and PVR
 
@@ -25,14 +21,15 @@ Simply pulling `ghcr.io/thespad/get_iplayer` should retrieve the correct image f
 
 The architectures supported by this image are:
 
-| Architecture | Tag |
-| :----: | --- |
-| x86-64 | latest |
-| arm64 | latest |
-| armhf | latest |
+| Architecture | Available | Tag |
+| :----: | :----: | ---- |
+| x86-64 | ✅ | latest |
+| arm64 | ✅ | latest |
+| armhf | ✅ | latest |
+
 ## Application Setup
 
-Webui is accessible at http://SERVERIP:PORT
+Webui is accessible at `http://SERVERIP:PORT`
 
 Interact with the CLI via something like `docker exec -it get_iplayer /app/get_iplayer/get_iplayer "hey duggee"`
 
