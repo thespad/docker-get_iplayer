@@ -10,7 +10,7 @@ jobs:
     with:
       repo_owner: ${{ github.repository_owner }}
       baseimage: "alpine"
-      basebranch: "master"
+      basebranch: "3.15"
       app_name: "get_iplayer"
     secrets:
       repo_scoped_token: ${{ secrets.repo_scoped_token }}
