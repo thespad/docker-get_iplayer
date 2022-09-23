@@ -1,4 +1,5 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.15
+FROM ghcr.io/linuxserver/baseimage-alpine:3.16
+
 LABEL maintainer="Adam Beardwood"
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer 
 ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
@@ -12,7 +13,6 @@ RUN \
     perl-xml-libxml \
     perl-libwww \
     jq \
-    curl \
     icu-libs \
     krb5-libs \
     libgcc \
@@ -35,7 +35,6 @@ RUN \
     /tmp/get_iplayer.tar.gz -C \
     /app/get_iplayer/ --strip-components=1 && \
   chmod 755 /app/get_iplayer/get_iplayer /app/get_iplayer/get_iplayer.cgi && \
-  rm /tmp/get_iplayer.tar.gz && \
   mkdir /downloads && \
   echo "**** install dotnet runtime ****" && \
   mkdir -p /app/sonarrautoimport && \
@@ -44,7 +43,9 @@ RUN \
     "https://dot.net/v1/dotnet-install.sh" && \
   chmod +x /tmp/dotnet-install.sh && \
   /tmp/dotnet-install.sh --channel 5.0 --runtime dotnet --os linux-musl --install-dir /usr/share/dotnet && \
-  rm /tmp/dotnet-install.sh
+  rm -rf \
+    /root/.cache \
+    /tmp/*
 
 COPY root/ /
 
