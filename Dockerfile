@@ -1,6 +1,13 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.16
 
-LABEL maintainer="Adam Beardwood"
+ARG BUILD_DATE
+ARG VERSION
+ARG APP_VERSION
+LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="thespad"
+LABEL org.opencontainers.image.source="https://github.com/thespad/docker-get_iplayer"
+LABEL org.opencontainers.image.url="https://github.com/thespad/docker-get_iplayer"
+
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer 
 ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
 
