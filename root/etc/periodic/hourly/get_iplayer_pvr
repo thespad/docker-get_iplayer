@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 exec \
-    s6-svc -o /var/run/s6/services/get_iplayer
+    s6-svc -o /run/service/svc-get_iplayer

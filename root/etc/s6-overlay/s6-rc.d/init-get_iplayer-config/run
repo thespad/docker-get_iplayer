@@ -5,7 +5,7 @@ if [ ! -e "/config/.get_iplayer" ]; then
 fi
 
 if [ ! -e "/config/log" ]; then
-	mkdir -p /config/log
+	mkdir -p /config/log/get_iplayer/
 fi
 
 # permissions

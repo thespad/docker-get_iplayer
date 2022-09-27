@@ -175,6 +175,7 @@ docker build \
 
 ## Versions
 
+* **23.09.21:** - Rebase to Alpine 3.16, migrate to s6v3
 * **28.11.21:** - Rebase to Alpine 3.15
 * **17.06.21:** - Rebase to Alpine 3.14
 * **24.03.21:** - Added SonarrAutoImport

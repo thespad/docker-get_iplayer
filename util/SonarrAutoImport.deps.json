@@ -1,17 +1,17 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v5.0",
+    "name": ".NETCoreApp,Version=v6.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v5.0": {
+    ".NETCoreApp,Version=v6.0": {
       "SonarrAutoImport/1.0.0": {
         "dependencies": {
           "CommandLineParser": "2.8.0",
-          "RestSharp": "106.12.0",
+          "RestSharp": "106.15.0",
           "Serilog": "2.10.0",
-          "Serilog.Sinks.Console": "4.0.0",
+          "Serilog.Sinks.Console": "4.0.1",
           "Serilog.Sinks.File": "5.0.0"
         },
         "runtime": {
@@ -26,11 +26,11 @@
           }
         }
       },
-      "RestSharp/106.12.0": {
+      "RestSharp/106.15.0": {
         "runtime": {
           "lib/netstandard2.0/RestSharp.dll": {
-            "assemblyVersion": "106.12.0.0",
-            "fileVersion": "106.12.0.0"
+            "assemblyVersion": "106.15.0.0",
+            "fileVersion": "106.15.0.0"
           }
         }
       },
@@ -42,14 +42,14 @@
           }
         }
       },
-      "Serilog.Sinks.Console/4.0.0": {
+      "Serilog.Sinks.Console/4.0.1": {
         "dependencies": {
           "Serilog": "2.10.0"
         },
         "runtime": {
           "lib/net5.0/Serilog.Sinks.Console.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.0.0"
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
           }
         }
       },
@@ -79,12 +79,12 @@
       "path": "commandlineparser/2.8.0",
       "hashPath": "commandlineparser.2.8.0.nupkg.sha512"
     },
-    "RestSharp/106.12.0": {
+    "RestSharp/106.15.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-irOsQHe5nTJB0BKxGQnTX1dsgCPl5dLTxvL7gbl98JiFPiHMN4wpFyUG/66ZpaFCsIrPKh6XwozWXlwYe9JwYQ==",
-      "path": "restsharp/106.12.0",
-      "hashPath": "restsharp.106.12.0.nupkg.sha512"
+      "sha512": "sha512-HM7ohR6AscxedNenrrl93DSZG6hvdnA7O+NHyCl/6ZKTfn8psQ9rRmUpcb9eWr+140vmfxoVemql0bUoeGEW3A==",
+      "path": "restsharp/106.15.0",
+      "hashPath": "restsharp.106.15.0.nupkg.sha512"
     },
     "Serilog/2.10.0": {
       "type": "package",
@@ -93,12 +93,12 @@
       "path": "serilog/2.10.0",
       "hashPath": "serilog.2.10.0.nupkg.sha512"
     },
-    "Serilog.Sinks.Console/4.0.0": {
+    "Serilog.Sinks.Console/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yJQit9sTJ4xGLKgCujqDJsaGqBNJwGB/H898z+xYlMG06twy4//6LLnSrsmpduZxcHIG4im7cv+JmXLzXz2EkQ==",
-      "path": "serilog.sinks.console/4.0.0",
-      "hashPath": "serilog.sinks.console.4.0.0.nupkg.sha512"
+      "sha512": "sha512-apLOvSJQLlIbKlbx+Y2UDHSP05kJsV7mou+fvJoRGs/iR+jC22r8cuFVMjjfVxz/AD4B2UCltFhE1naRLXwKNw==",
+      "path": "serilog.sinks.console/4.0.1",
+      "hashPath": "serilog.sinks.console.4.0.1.nupkg.sha512"
     },
     "Serilog.Sinks.File/5.0.0": {
       "type": "package",
