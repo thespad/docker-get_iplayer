@@ -1,5 +1,8 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.16
+# syntax=docker/dockerfile:1
 
+FROM ghcr.io/linuxserver/baseimage-alpine:3.17
+
+# set version label
 ARG BUILD_DATE
 ARG VERSION
 ARG APP_VERSION
@@ -19,12 +22,11 @@ RUN \
     perl-lwp-protocol-https \
     perl-xml-libxml \
     perl-libwww \
-    jq \
     icu-libs \
     krb5-libs \
     libgcc \
     libintl \
-    libssl1.1 \
+    libssl3 \
     libstdc++ \
     zlib && \
   apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
@@ -59,4 +61,5 @@ COPY root/ /
 COPY util/ /app/sonarrautoimport/
 
 EXPOSE 1935
+
 VOLUME /config
