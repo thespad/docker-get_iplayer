@@ -33,13 +33,13 @@ RUN \
     atomicparsley && \
   echo "**** install get_iplayer ****" && \
   mkdir -p /app/get_iplayer && \
-  if [ -z ${GET_IPLAYER_RELEASE+x} ]; then \
-    GET_IPLAYER_RELEASE=$(curl -sX GET "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" \
+  if [ -z ${APP_VERSION+x} ]; then \
+    APP_VERSION=$(curl -sX GET "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -s -o \
     /tmp/get_iplayer.tar.gz -L \
-    "https://github.com/get-iplayer/get_iplayer/archive/${GET_IPLAYER_RELEASE}.tar.gz" && \
+    "https://github.com/get-iplayer/get_iplayer/archive/${APP_VERSION}.tar.gz" && \
   tar xf \
     /tmp/get_iplayer.tar.gz -C \
     /app/get_iplayer/ --strip-components=1 && \
