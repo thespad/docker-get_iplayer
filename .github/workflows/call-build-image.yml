@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: thespad/actions/.github/workflows/build-image.yml@v6
+    uses: thespad/actions/.github/workflows/build-image.yml@v7
     with:
       repo_owner: "thespad"
       app_name: "get_iplayer"
