@@ -10,6 +10,7 @@ LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="thespad"
 LABEL org.opencontainers.image.source="https://github.com/thespad/docker-get_iplayer"
 LABEL org.opencontainers.image.url="https://github.com/thespad/docker-get_iplayer"
+LABEL org.opencontainers.image.description="A BBC iPlayer/BBC Sounds Indexing Tool and PVR"
 
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer 
 ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
