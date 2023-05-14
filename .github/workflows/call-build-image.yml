@@ -14,6 +14,6 @@ jobs:
       release_type: "github"
       release_url: "https://api.github.com/repos/get-iplayer/get_iplayer"      
       dockerhub_user: "thespad"
-      target-arch: "all"
+      target-arch: "64"
     secrets:
       dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}
