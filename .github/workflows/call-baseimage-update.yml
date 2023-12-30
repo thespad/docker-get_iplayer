@@ -1,4 +1,5 @@
 name: Check for base image updates
+
 on:
   workflow_dispatch:
   schedule:
