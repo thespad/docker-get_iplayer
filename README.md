@@ -25,7 +25,6 @@ The architectures supported by this image are:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | latest |
 | arm64 | ✅ | latest |
-| armhf | ❌ | latest |
 
 ## Application Setup
 
@@ -175,6 +174,7 @@ docker build \
 
 ## Versions
 
+* **30.12.23:** - Rebase to Alpine 3.19.
 * **14.05.23:** - Rebase to Alpine 3.18. Drop support for armhf.
 * **09.12.22:** - Rebase to Alpine 3.17.
 * **23.09.22:** - Rebase to Alpine 3.16, migrate to s6v3.
