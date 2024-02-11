@@ -174,6 +174,7 @@ docker build \
 
 ## Versions
 
+* **11.02.24:** - Build AtomicParsley from source.
 * **30.12.23:** - Rebase to Alpine 3.19.
 * **14.05.23:** - Rebase to Alpine 3.18. Drop support for armhf.
 * **09.12.22:** - Rebase to Alpine 3.17.
