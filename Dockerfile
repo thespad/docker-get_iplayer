@@ -16,6 +16,12 @@ ENV GETIPLAYER_PROFILE=/config/.get_iplayer
 ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
 
 RUN \
+  apk add --update --no-cache --virtual=build-dependencies \
+    build-base \
+    cmake \
+    git \
+    glib-dev \
+    zlib-dev && \
   apk add --update --no-cache \
     ffmpeg \
     perl-cgi \
@@ -30,8 +36,11 @@ RUN \
     libssl3 \
     libstdc++ \
     zlib && \
-  apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
-    atomicparsley && \
+  git clone -b get_iplayer https://github.com/get-iplayer/atomicparsley.git /tmp/atomic && \
+  cd /tmp/atomic && \
+  cmake . && \
+  cmake --build . --config Release && \
+  cmake --install . && \
   echo "**** install get_iplayer ****" && \
   mkdir -p /app/get_iplayer && \
   if [ -z ${APP_VERSION+x} ]; then \
@@ -53,6 +62,8 @@ RUN \
     "https://dot.net/v1/dotnet-install.sh" && \
   chmod +x /tmp/dotnet-install.sh && \
   /tmp/dotnet-install.sh --channel 6.0 --runtime dotnet --os linux-musl --install-dir /usr/share/dotnet && \
+  apk del --purge \
+    build-dependencies && \
   rm -rf \
     /root/.cache \
     /tmp/*
