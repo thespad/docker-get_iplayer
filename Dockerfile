@@ -40,7 +40,9 @@ RUN \
   cd /tmp/atomic && \
   cmake . && \
   cmake --build . --config Release && \
-  cmake --install . && \
+  cmake --install . --prefix /usr && \
+  cd /usr/bin && \
+  ln -s AtomicParsley atomicparsley && \
   echo "**** install get_iplayer ****" && \
   mkdir -p /app/get_iplayer && \
   if [ -z ${APP_VERSION+x} ]; then \
