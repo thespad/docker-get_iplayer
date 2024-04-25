@@ -4,16 +4,18 @@ on:
   release:
     types: [ published ]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   call-workflow:
-    uses: thespad/actions/.github/workflows/build-image.yml@v7
+    uses: thespad/actions/.github/workflows/build-image.yml@v8.0.0
     with:
       repo_owner: "thespad"
       app_name: "get_iplayer"
       release_type: "github"
-      release_url: "https://api.github.com/repos/get-iplayer/get_iplayer"      
+      release_url: "https://api.github.com/repos/get-iplayer/get_iplayer"
       dockerhub_user: "thespad"
       target-arch: "64"
+      sign_image: false
     secrets:
       dockerhub_password: ${{ secrets.DOCKER_PASSWORD }}

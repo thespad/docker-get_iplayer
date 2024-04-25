@@ -15,15 +15,13 @@
 
 ## Supported Architectures
 
-Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`.
-
-Simply pulling `ghcr.io/thespad/get_iplayer` should retrieve the correct image for your arch.
+Our images support multiple architectures and simply pulling `ghcr.io/thespad/get_iplayer:latest` should retrieve the correct image for your arch.
 
 The architectures supported by this image are:
 
 | Architecture | Available | Tag |
 | :----: | :----: | ---- |
-| x86-64 | ✅ | latest |
+| amd64 | ✅ | latest |
 | arm64 | ✅ | latest |
 
 ## Application Setup
