@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: thespad/actions/.github/workflows/check-and-release.yml@v7
+    uses: thespad/actions/.github/workflows/check-and-release.yml@v8
     with:
       repo_owner: "thespad"
       app_name: "get_iplayer"
