@@ -7,9 +7,9 @@
 [![GitHub Stars](https://img.shields.io/github/stars/thespad/docker-get_iplayer.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-get_iplayer)
 [![Docker Stars](https://img.shields.io/docker/stars/thespad/get_iplayer.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/thespad/get_iplayer)
 
-[![ci](https://img.shields.io/github/actions/workflow/status/thespad/docker-get_iplayer/call-check-and-release.yml?branch=main&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Upstream%20Updates)](https://github.com/thespad/docker-get_iplayer/actions/workflows/call-check-and-release.yml)
-[![ci](https://img.shields.io/github/actions/workflow/status/thespad/docker-get_iplayer/call-baseimage-update.yml?branch=main&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Baseimage%20Updates)](https://github.com/thespad/docker-get_iplayer/actions/workflows/call-baseimage-update.yml)
-[![ci](https://img.shields.io/github/actions/workflow/status/thespad/docker-get_iplayer/call-build-image.yml?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Build%20Image)](https://github.com/thespad/docker-get_iplayer/actions/workflows/call-build-image.yml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/thespad/docker-get_iplayer/call-check-and-release.yml?branch=main&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Upstream%20Updates)](https://github.com/thespad/docker-get_iplayer/actions/workflows/call-check-and-release.yml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/thespad/docker-get_iplayer/call-baseimage-update.yml?branch=main&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Baseimage%20Updates)](https://github.com/thespad/docker-get_iplayer/actions/workflows/call-baseimage-update.yml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/thespad/docker-get_iplayer/call-build-image.yml?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Build%20Image)](https://github.com/thespad/docker-get_iplayer/actions/workflows/call-build-image.yml)
 
 [get_iplayer](https://github.com/get-iplayer/get_iplayer/) is a BBC iPlayer/BBC Sounds Indexing Tool and PVR
 
@@ -42,7 +42,6 @@ Compatible with docker-compose v2 schemas.
 
 ```yaml
 ---
-version: "2.1"
 services:
   get_iplayer:
     image: ghcr.io/thespad/get_iplayer
@@ -55,8 +54,8 @@ services:
       - BASEURL= #optional
       - ENABLEIMPORT= #optional
     volumes:
-      - </path/to/appdata/config>:/config
-      - </path/to/appdata/downloads>:/downloads
+      - /path/to/get_iplayer/config:/config
+      - /path/to/downloads:/downloads
     ports:
       - 1935:1935
     restart: unless-stopped
@@ -74,8 +73,8 @@ docker run -d \
   -e BASEURL= `#optional` \
   -e ENABLEIMPORT= `#optional` \
   -p 1935:1935 \
-  -v </path/to/appdata/config>:/config \
-  -v </path/to/appdata/downloads>:/downloads \
+  -v /path/to/get_iplayer/config:/config \
+  -v /path/to/downloads:/downloads \
   --restart unless-stopped \
   ghcr.io/thespad/get_iplayer
 ```
@@ -172,6 +171,7 @@ docker build \
 
 ## Versions
 
+* **26.05.24:** - Rebase to Alpine 3.20.
 * **11.02.24:** - Build AtomicParsley from source.
 * **30.12.23:** - Rebase to Alpine 3.19.
 * **14.05.23:** - Rebase to Alpine 3.18. Drop support for armhf.

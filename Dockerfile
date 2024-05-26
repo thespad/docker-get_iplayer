@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.19
+FROM ghcr.io/linuxserver/baseimage-alpine:3.20
 
 # set version label
 ARG BUILD_DATE
@@ -11,6 +11,7 @@ LABEL maintainer="thespad"
 LABEL org.opencontainers.image.source="https://github.com/thespad/docker-get_iplayer"
 LABEL org.opencontainers.image.url="https://github.com/thespad/docker-get_iplayer"
 LABEL org.opencontainers.image.description="A BBC iPlayer/BBC Sounds Indexing Tool and PVR"
+LABEL org.opencontainers.image.authors="thespad"
 
 ENV GETIPLAYER_PROFILE=/config/.get_iplayer
 ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
@@ -64,6 +65,7 @@ RUN \
     "https://dot.net/v1/dotnet-install.sh" && \
   chmod +x /tmp/dotnet-install.sh && \
   /tmp/dotnet-install.sh --channel 6.0 --runtime dotnet --os linux-musl --install-dir /usr/share/dotnet && \
+  printf "Version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   apk del --purge \
     build-dependencies && \
   rm -rf \
