@@ -11,7 +11,7 @@ jobs:
     with:
       repo_owner: "thespad"
       baseimage: "alpine"
-      basebranch: "3.19"
+      basebranch: "3.20"
       app_name: "get_iplayer"
     secrets:
       repo_scoped_token: ${{ secrets.repo_scoped_token }}
