@@ -28,7 +28,7 @@ The architectures supported by this image are:
 
 Webui is accessible at `http://SERVERIP:PORT`
 
-Interact with the CLI via something like `docker exec -it get_iplayer /app/get_iplayer/get_iplayer "hey duggee"`
+Interact with the CLI via something like `docker exec -it -u abc get_iplayer /app/get_iplayer/get_iplayer "hey duggee"`
 
 More info at [get_iplayer](https://github.com/get-iplayer/get_iplayer/).
 
