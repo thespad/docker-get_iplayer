@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21
 
 # set version label
 ARG BUILD_DATE
@@ -13,8 +13,8 @@ LABEL org.opencontainers.image.url="https://github.com/thespad/docker-get_iplaye
 LABEL org.opencontainers.image.description="A BBC iPlayer/BBC Sounds Indexing Tool and PVR"
 LABEL org.opencontainers.image.authors="thespad"
 
-ENV GETIPLAYER_PROFILE=/config/.get_iplayer
-ENV PATH="${PATH:+${PATH}:}/app/get_iplayer"
+ENV GETIPLAYER_PROFILE=/config/.get_iplayer \
+  PATH="${PATH:+${PATH}:}/app/get_iplayer"
 
 RUN \
   apk add --update --no-cache --virtual=build-dependencies \
@@ -71,6 +71,9 @@ RUN \
   rm -rf \
     /root/.cache \
     /tmp/*
+
+ENV TMPDIR=/run/get_iplayer-temp \
+  MOJO_TMPDIR=/run/get_iplayer-temp
 
 COPY root/ /
 

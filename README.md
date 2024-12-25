@@ -32,13 +32,22 @@ Interact with the CLI via something like `docker exec -it -u abc get_iplayer /ap
 
 More info at [get_iplayer](https://github.com/get-iplayer/get_iplayer/).
 
+## Read-Only Operation
+
+This image can be run with a read-only container filesystem.
+
+## Non-Root Operation
+
+This image can be run with a non-root user.
+
 ## Usage
 
 Here are some example snippets to help you get started creating a container.
 
-### docker-compose ([recommended](https://docs.linuxserver.io/general/docker-compose))
+>[!NOTE]
+>Unless a parameter is flaged as 'optional', it is *mandatory* and a value must be provided.
 
-Compatible with docker-compose v2 schemas.
+### docker-compose ([recommended](https://docs.linuxserver.io/general/docker-compose))
 
 ```yaml
 ---
@@ -154,7 +163,8 @@ Below are the instructions for updating containers:
 
 ### Image Update Notifications - Diun (Docker Image Update Notifier)
 
-* We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
+>[!TIP]
+>We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
 
 ## Building locally
 
@@ -169,8 +179,15 @@ docker build \
   -t ghcr.io/thespad/get_iplayer:latest .
 ```
 
+The ARM variants can be built on x86_64 hardware and vice versa using `lscr.io/linuxserver/qemu-static`
+
+```bash
+docker run --rm --privileged lscr.io/linuxserver/qemu-static --reset
+```
+
 ## Versions
 
+* **26.12.24:** - Rebase to Alpine 3.21.
 * **26.05.24:** - Rebase to Alpine 3.20.
 * **11.02.24:** - Build AtomicParsley from source.
 * **30.12.23:** - Rebase to Alpine 3.19.
