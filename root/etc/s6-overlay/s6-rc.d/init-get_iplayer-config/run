@@ -1,31 +1,43 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
-if [ ! -e "/config/.get_iplayer" ]; then
-	mkdir -p /config/.get_iplayer
-fi
+mkdir -p /config/.get_iplayer \
+    /config/log/get_iplayer/ \
+    /run/get_iplayer-temp
 
-if [ ! -e "/config/log" ]; then
-	mkdir -p /config/log/get_iplayer/
-fi
+if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
+    lsiown -R abc:abc \
+        /config \
+        /run/get_iplayer-temp
 
-# permissions
-chown -R abc:abc \
-	/app/get_iplayer \
-	/config \
-	/downloads
+    if grep -qe ' /downloads ' /proc/mounts; then
+        lsiown -R abc:abc \
+            /downloads
+    fi
 
-chmod -R +x \
-	/etc/periodic
-
-#refresh cache if necessary
-if [[ $INCLUDERADIO == "true" ]]; then
-	if [ ! -f "/config/.get_iplayer/tv.cache" ] || [ ! -f "/config/.get_iplayer/radio.cache" ]; then
-		exec \
-        s6-setuidgid abc /app/get_iplayer/get_iplayer --refresh --type=all
-	fi
+    #refresh cache if necessary
+    if [[ $INCLUDERADIO == "true" ]]; then
+        if [[ ! -f "/config/.get_iplayer/tv.cache" ]] || [[ ! -f "/config/.get_iplayer/radio.cache" ]]; then
+            exec \
+            s6-setuidgid abc /app/get_iplayer/get_iplayer --refresh --type=all
+        fi
+    else
+        if [[ ! -f "/config/.get_iplayer/tv.cache" ]]; then
+            exec \
+            s6-setuidgid abc /app/get_iplayer/get_iplayer --refresh --type=tv
+        fi
+    fi
 else
-	if [ ! -f "/config/.get_iplayer/tv.cache" ]; then
-		exec \
-        s6-setuidgid abc /app/get_iplayer/get_iplayer --refresh --type=tv
-	fi
+    #refresh cache if necessary
+    if [[ $INCLUDERADIO == "true" ]]; then
+        if [[ ! -f "/config/.get_iplayer/tv.cache" ]] || [[ ! -f "/config/.get_iplayer/radio.cache" ]]; then
+            exec \
+            /app/get_iplayer/get_iplayer --refresh --type=all
+        fi
+    else
+        if [[ ! -f "/config/.get_iplayer/tv.cache" ]]; then
+            exec \
+            /app/get_iplayer/get_iplayer --refresh --type=tv
+        fi
+    fi
 fi
