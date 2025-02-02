@@ -36,6 +36,8 @@ More info at [get_iplayer](https://github.com/get-iplayer/get_iplayer/).
 
 This image can be run with a read-only container filesystem.
 
+Running the container read-only requires mounting `/run` to tmpfs with the `exec` flag.
+
 ## Non-Root Operation
 
 This image can be run with a non-root user.
