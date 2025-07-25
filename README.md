@@ -189,6 +189,7 @@ docker run --rm --privileged lscr.io/linuxserver/qemu-static --reset
 
 ## Versions
 
+* **25.07.25:** - Rebase to Alpine 3.22.
 * **26.12.24:** - Rebase to Alpine 3.21.
 * **26.05.24:** - Rebase to Alpine 3.20.
 * **11.02.24:** - Build AtomicParsley from source.
