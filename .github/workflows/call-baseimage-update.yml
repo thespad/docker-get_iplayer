@@ -7,11 +7,12 @@ on:
 
 jobs:
   call-workflow:
-    uses: thespad/actions/.github/workflows/check-baseimage-update.yml@v8.0.5
+    uses: thespad/actions/.github/workflows/check-baseimage-update.yml@v9.0.2
     with:
       repo_owner: "thespad"
       baseimage: "alpine"
-      basebranch: "3.21"
+      basebranch: "3.22"
       app_name: "get_iplayer"
+      branch_name: "main"
     secrets:
       repo_scoped_token: ${{ secrets.repo_scoped_token }}
