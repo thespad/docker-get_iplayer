@@ -1,5 +1,15 @@
 # syntax=docker/dockerfile:1
 
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS dotnet-build
+
+RUN \
+  mkdir -p /build && \
+  SIA_VERSION=$(curl -sX GET "https://api.github.com/repos/Webreaper/SonarrAutoImport/releases/latest" \
+    | awk '/tag_name/{print $4;exit}' FS='[""]') && \
+  git clone https://github.com/Webreaper/SonarrAutoImport -b "${SIA_VERSION}"  && \
+  cd SonarrAutoImport/SonarrAutoImport && \
+  dotnet build -o /build --os linux-musl
+
 FROM ghcr.io/linuxserver/baseimage-alpine:3.22
 
 # set version label
@@ -24,19 +34,14 @@ RUN \
     glib-dev \
     zlib-dev && \
   apk add --update --no-cache \
+    dotnet9-runtime \
     ffmpeg \
     perl-cgi \
     perl-mojolicious \
     perl-lwp-protocol-https \
     perl-xml-libxml \
     perl-libwww \
-    icu-libs \
-    krb5-libs \
-    libgcc \
-    libintl \
-    libssl3 \
-    libstdc++ \
-    zlib && \
+    icu-libs && \
   git clone -b get_iplayer https://github.com/get-iplayer/atomicparsley.git /tmp/atomic && \
   cd /tmp/atomic && \
   cmake . && \
@@ -58,13 +63,6 @@ RUN \
     /app/get_iplayer/ --strip-components=1 && \
   chmod 755 /app/get_iplayer/get_iplayer /app/get_iplayer/get_iplayer.cgi && \
   mkdir /downloads && \
-  echo "**** install dotnet runtime ****" && \
-  mkdir -p /app/sonarrautoimport && \
-  curl -s -o \
-    /tmp/dotnet-install.sh -L \
-    "https://dot.net/v1/dotnet-install.sh" && \
-  chmod +x /tmp/dotnet-install.sh && \
-  /tmp/dotnet-install.sh --channel 6.0 --runtime dotnet --os linux-musl --install-dir /usr/share/dotnet && \
   printf "Version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   apk del --purge \
     build-dependencies && \
@@ -77,7 +75,7 @@ ENV TMPDIR=/run/get_iplayer-temp \
 
 COPY root/ /
 
-COPY util/ /app/sonarrautoimport/
+COPY --from=dotnet-build /build /app/sonarrautoimport/
 
 EXPOSE 1935
 
