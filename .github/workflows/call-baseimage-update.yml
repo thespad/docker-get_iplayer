@@ -11,7 +11,7 @@ jobs:
     with:
       repo_owner: "thespad"
       baseimage: "alpine"
-      basebranch: "3.22"
+      basebranch: "3.23"
       app_name: "get_iplayer"
       branch_name: "main"
     secrets:
