@@ -10,7 +10,7 @@ RUN \
   cd SonarrAutoImport/SonarrAutoImport && \
   dotnet build -o /build --os linux-musl
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.22
+FROM ghcr.io/linuxserver/baseimage-alpine:3.23
 
 # set version label
 ARG BUILD_DATE
